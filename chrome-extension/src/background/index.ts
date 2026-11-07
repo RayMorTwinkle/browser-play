@@ -1,9 +1,27 @@
 import 'webextension-polyfill';
-import { exampleThemeStorage } from '@extension/storage';
+import { videoSettingsStorage } from '@extension/storage';
 
-exampleThemeStorage.get().then(theme => {
-  console.log('theme', theme);
+videoSettingsStorage.get().then(settings => {
+  console.log('Video Helper: Settings loaded', settings);
 });
 
-console.log('Background loaded');
-console.log("Edit 'chrome-extension/src/background/index.ts' and save to reload.");
+chrome.runtime.onInstalled.addListener(() => {
+  console.log('Video Helper extension installed');
+});
+
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  if (namespace === 'local' && changes['video-settings-key']) {
+    const newSettings = changes['video-settings-key'].newValue;
+    console.log('Video Helper: Settings changed', newSettings);
+
+    chrome.tabs.query({}, tabs => {
+      tabs.forEach(tab => {
+        if (tab.id && tab.url && !tab.url.startsWith('chrome://')) {
+          chrome.tabs.sendMessage(tab.id, { type: 'SETTINGS_UPDATED', settings: newSettings }).catch(() => {});
+        }
+      });
+    });
+  }
+});
+
+console.log('Video Helper: Background script loaded');

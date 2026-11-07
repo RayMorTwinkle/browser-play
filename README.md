@@ -1,275 +1,250 @@
 <div align="center">
 
-<picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/99cb6303-64e4-4bed-bf3f-35735353e6de" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/a5dbf71c-c509-4c4f-80f4-be88a1943b0a" />
-    <img alt="Logo" src="https://github.com/user-attachments/assets/99cb6303-64e4-4bed-bf3f-35735353e6de" />
-</picture>
+# 🎬 视频助手 (Video Helper)
 
-![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![](https://badges.aleen42.com/src/vitejs.svg)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/RayMorTwinkle/browser-play)
+[![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
-![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/lint.yml/badge.svg)
+**一个强大的浏览器视频助手插件，支持自动续播和倍速控制**
 
-<a href="https://discord.gg/4ERQ6jgV9a" target="_blank"><img src="https://discord.com/api/guilds/1263404974830915637/widget.png"/></a>
-
-> This boilerplate
-> has [Legacy version](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/tree/legacy)
+[English](#english) | [中文](#中文)
 
 </div>
 
-> [!NOTE]
-> This project is listed in the [Awesome Vite](https://github.com/vitejs/awesome-vite)
+---
 
-> [!TIP]
-> Share storage state between all pages
->
-> https://github.com/user-attachments/assets/3b8e189f-6443-490e-a455-4f9570267f8c
+<a name="中文"></a>
+## 📖 简介
 
-## Table of Contents
+视频助手是一款浏览器扩展插件，安装后可以增强你的视频观看体验。它支持所有网站的 HTML5 视频播放器，让你轻松控制视频播放行为。
 
-- [Intro](#intro)
-- [Features](#features)
-- [Structure](#structure)
-    - [ChromeExtension](#structure-chrome-extension)
-    - [Packages](#structure-packages)
-    - [Pages](#structure-pages)
-- [Installation](#installation)
-    - [Chrome](#installation-chrome)
-    - [Firefox](#installation-firefox)
-- [Install dependency](#install-dependency)
-    - [For root](#install-dependency-for-root)
-    - [For module](#install-dependency-for-module)
-- [Environment variables](#env-variables)
-    - [Add new](#env-variables-new)
-    - [Set via CLI](#env-variables-cli-set)
-- [Troubleshooting](#troubleshooting)
-    - [Hot module reload seems to have frozen](#hot-module-reload-seems-to-have-frozen)
-    - [Imports not resolving correctly](#imports-not-resolving-correctly)
-- [Community](#community)
-- [Debugging](#debugging)
-- [Reference](#reference)
-- [Star History](#star-history)
-- [Contributors](#contributors)
+### ✨ 核心功能
 
-## Intro
-
-This boilerplate helps you create Chrome/Firefox extensions using React and Typescript. It improves
-the build speed and development experience by using Vite and Turborepo.
-
-## Features
-
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwindcss](https://tailwindcss.com/)
-- [Vite](https://vitejs.dev/) with [Rollup](https://rollupjs.org/)
-- [Turborepo](https://turbo.build/repo)
-- [Prettier](https://prettier.io/)
-- [ESLint](https://eslint.org/)
-- [Chrome Extensions Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
-- [Custom i18n package](/packages/i18n/)
-- [Custom HMR (Hot Module Rebuild) plugin](/packages/hmr)
-- [End-to-end testing with WebdriverIO](https://webdriver.io/)
-
-## Installation
-
-1. Clone this repository.( ```git clone https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite``` )
-2. Ensure your node version is >= than in `.nvmrc` file, recommend to use [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro)
-3. Edit `/packages/i18n/locales/`{your locale(s)}/`messages.json`
-4. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
-5. Install pnpm globally: `npm install -g pnpm`
-6. Run `pnpm install`
-7. Check if you have that configuration in your IDE/Editor:
-    - <b>VS Code</b>:
-        - Installed [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-        - Installed [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-        - Enabled `Typescript Workbench version` in settings:
-            - CTRL + SHIFT + P -> Search: `Typescript: Select Typescript version...` -> `Use Workbench version`
-            - [Read more](https://code.visualstudio.com/docs/languages/typescript#_using-newer-typescript-versions)
-        - Optional, for imports to work correctly in WSL, you might need to install the [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) extension and connect to WSL remotely from VS Code. See overview section in the extension page for more information.
-    - <b>WebStorm</b>:
-      - Configured [ESLint](https://www.jetbrains.com/help/webstorm/eslint.html#ws_eslint_configure_run_eslint_on_save)
-      - Configured [Prettier](https://prettier.io/docs/en/webstorm.html)
-      - Optional, but useful `File | Settings | Tools | Actions on Save`\
-      -> `Optimize imports` and `Reformat code`
-8. Run `pnpm update-version <version>` for change the `version` to the desired version of your extension.
-
-> [!IMPORTANT]
-> On Windows, make sure you have WSL enabled and Linux distribution (e.g. Ubuntu) installed on WSL.
-> 
-> [Installation Guide](https://learn.microsoft.com/en-us/windows/wsl/install)
-
-<b>Then, depending on the target browser:</b>
-
-### For Chrome: <a name="installation-chrome"></a>
-
-1. Run:
-    - Dev: `pnpm dev` (on Windows, you should run as administrator;
-      see [issue#456](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/456))
-    - Prod: `pnpm build`
-2. Open in browser - `chrome://extensions`
-3. Check - <kbd>Developer mode</kbd>
-4. Click - <kbd>Load unpacked</kbd> in the upper left corner
-5. Select the `dist` directory from the boilerplate project
-
-### For Firefox: <a name="installation-firefox"></a>
-
-1. Run:
-    - Dev: `pnpm dev:firefox`
-    - Prod: `pnpm build:firefox`
-2. Open in browser - `about:debugging#/runtime/this-firefox`
-3. Click - <kbd>Load Temporary Add-on...</kbd> in the upper right corner
-4. Select the `./dist/manifest.json` file from the boilerplate project
-
-> [!NOTE]
-> In Firefox, you load add-ons in temporary mode. That means they'll disappear after each browser close. You have to
-> load the add-on on every browser launch.
-
-## Install dependency for turborepo: <a name="install-dependency"></a>
-
-### For root: <a name="install-dependency-for-root"></a>
-
-1. Run `pnpm i <package> -w`
-
-### For module: <a name="install-dependency-for-module"></a>
-
-1. Run `pnpm i <package> -F <module name>`
-
-`package` - Name of the package you want to install e.g. `nodemon` \
-`module-name` - You can find it inside each `package.json` under the key `name`, e.g. `@extension/content-script`, you
-can use only `content-script` without `@extension/` prefix
-
-## How do I disable modules I'm not using?
-
-[Read here](packages/module-manager/README.md)
-
-## Environment variables
-
-Read: [Env Documentation](packages/env/README.md)
-
-## Boilerplate structure <a name="structure"></a>
-
-### Chrome extension <a name="structure-chrome-extension"></a>
-
-The extension lives in the `chrome-extension` directory and includes the following files:
-
-- [`manifest.ts`](chrome-extension/manifest.ts) - script that outputs the `manifest.json`
-- [`src/background`](chrome-extension/src/background) - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/)
-  (`background.service_worker` in manifest.json)
-- [`public`](chrome-extension/public/) - icons referenced in the manifest; content CSS for user's page injection
-
-> [!IMPORTANT]
-> To facilitate development, the boilerplate is configured to "Read and change all your data on all websites".
-> In production, it's best practice to limit the premissions to only the strictly necessary websites. See
-> [Declaring permissions](https://developer.chrome.com/docs/extensions/develop/concepts/declare-permissions)
-> and edit `manifest.js` accordingly.
-
-### Pages <a name="structure-pages"></a>
-
-Code that is transpiled to be part of the extension lives in the [pages](pages) directory.
-
-- [`content`](pages/content) - Scripts injected into specified pages (You can see it in console)
-- [`content-ui`](pages/content-ui) - React Components injected into specified pages (You can see it at the very bottom of pages)
-- [`content-runtime`](pages/content-runtime/src/) - [injected content scripts](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#functionality)
-  This can be injected from e.g. `popup` like standard `content`
-- [`devtools`](pages/devtools/) - [extend the browser DevTools](https://developer.chrome.com/docs/extensions/how-to/devtools/extend-devtools#creating)
-  (`devtools_page` in manifest.json)
-- [`devtools-panel`](pages/devtools-panel/) - [DevTools panel](https://developer.chrome.com/docs/extensions/reference/api/devtools/panels)
-  for [devtools](pages/devtools/src/index.ts)
-- [`new-tab`](pages/new-tab/) - [override the default New Tab page](https://developer.chrome.com/docs/extensions/develop/ui/override-chrome-pages)
-  (`chrome_url_overrides.newtab` in manifest.json)
-- [`options`](pages/options/) - [options page](https://developer.chrome.com/docs/extensions/develop/ui/options-page)
-  (`options_page` in manifest.json)
-- [`popup`](pages/popup/) - [popup](https://developer.chrome.com/docs/extensions/reference/api/action#popup) shown when
-  clicking the extension in the toolbar
-  (`action.default_popup` in manifest.json)
-- [`side-panel`](pages/side-panel/) - [sidepanel (Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/api/sidePanel)
-  (`side_panel.default_path` in manifest.json)
-
-### Packages <a name="structure-packages"></a>
-
-Some shared packages:
-
-- `dev-utils` - utilities for Chrome extension development (manifest-parser, logger)
-- `env` - exports object which contain all environment variables from `.env` and dynamically declared
-- `hmr` - custom HMR plugin for Vite, injection script for reload/refresh, HMR dev-server
-- `i18n` - custom internationalization package; provides i18n function with type safety and other validation
-- `shared` - shared code for the entire project (types, constants, custom hooks, components etc.)
-- `storage` - helpers for easier integration with [storage](https://developer.chrome.com/docs/extensions/reference/api/storage), e.g. local/session storages
-- `tailwind-config` - shared Tailwind config for entire project
-- `tsconfig` - shared tsconfig for the entire project
-- `ui` - function to merge your Tailwind config with the global one; you can save components here
-- `vite-config` - shared Vite config for the entire project
-
-Other useful packages:
-
-- `zipper` - run `pnpm zip` to pack the `dist` folder into `extension-YYYYMMDD-HHmmss.zip` inside the newly created
-  `dist-zip`
-- `module-manager` - run `pnpm module-manager` to enable/disable modules
-- `e2e` - run `pnpm e2e` for end-to-end tests of your zipped extension on different browsers
-
-## Troubleshooting
-
-### Hot module reload seems to have frozen
-
-If saving source files doesn't cause the extension HMR code to trigger a reload of the browser page, try this:
-
-1. Ctrl+C the development server and restart it (`pnpm run dev`)
-2. If you get a [`grpc` error](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612),
-   [kill the
-   `turbo` process](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612#issuecomment-2518982339)
-   and run `pnpm dev` again.
-
-### Imports not resolving correctly
-
-If you are using WSL and imports are not resolving correctly, ensure that you have connected VS Code to WSL remotely using the [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) extension.
-
-## Community
-
-To chat with other community members, you can join the [Discord](https://discord.gg/4ERQ6jgV9a) server.
-You can ask questions on that server, and you can also help others.
-
-Also, suggest new features or share any challenges you've faced while developing Chrome extensions!
-
-## Debugging
-
-If you're debugging one, you can use [Brie](https://go.briehq.com/github?utm_source=CEB) lets you capture screenshots, errors, and network activity, making it easier for us to help.
-
-## Reference
-
-- [Chrome Extensions](https://developer.chrome.com/docs/extensions)
-- [Vite Plugin](https://vitejs.dev/guide/api-plugin.html)
-- [Rollup](https://rollupjs.org/guide/en/)
-- [Turborepo](https://turbo.build/repo/docs)
-- [Rollup-plugin-chrome-extension](https://www.extend-chrome.dev/rollup-plugin)
-
-## Star History <a name="star-history"></a>
-
-<a href="https://star-history.com/#Jonghakseo/chrome-extension-boilerplate-react-vite&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Jonghakseo/chrome-extension-boilerplate-react-vite&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Jonghakseo/chrome-extension-boilerplate-react-vite&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Jonghakseo/chrome-extension-boilerplate-react-vite&type=Date" />
- </picture>
-</a>
-
-## Contributors <a name="contributors"></a>
-
-This Boilerplate is made possible thanks to all of its contributors.
-
-<a href="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/graphs/contributors">
-  <img width="500px" src="https://contrib.rocks/image?repo=Jonghakseo/chrome-extension-boilerplate-react-vite" alt="All Contributors"/>
-</a>
+- 🔄 **自动续播** - 视频暂停后自动继续播放，无需手动点击
+- ⚡ **倍速播放** - 支持 0.1x ~ 16x 任意倍速调节
+- 🌐 **全网页通用** - 支持所有网站的视频（YouTube、Bilibili、腾讯视频、爱奇艺等）
+- 💾 **设置记忆** - 自动保存你的偏好设置
+- 🛡️ **隐私保护** - 不收集任何用户数据
 
 ---
 
-## Special Thanks To
+## 🚀 安装方法
 
-| <a href="https://jb.gg/OpenSourceSupport"><img width="40" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo."></a> | <a href="https://www.linkedin.com/in/j-acks0n"><img width="40" style="border-radius:50%" src='https://avatars.githubusercontent.com/u/23139754' alt='Jackson Hong'/></a> |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+### 方式一：Chrome 网上应用店（推荐）
+
+> 即将上架，敬请期待
+
+### 方式二：手动安装（开发者模式）
+
+1. **下载插件**
+   ```bash
+   git clone https://github.com/RayMorTwinkle/browser-play.git
+   cd browser-play
+   ```
+
+2. **安装依赖**
+   ```bash
+   npm install -g pnpm
+   pnpm install
+   ```
+
+3. **构建插件**
+   ```bash
+   pnpm build
+   ```
+
+4. **加载到浏览器**
+   - 打开 Chrome 浏览器，输入 `chrome://extensions/`
+   - 开启右上角的「开发者模式」
+   - 点击「加载已解压的扩展程序」
+   - 选择项目中的 `dist` 文件夹
 
 ---
 
-Made by [Jonghakseo](https://jonghakseo.github.io/)
+## 📖 使用指南
+
+### 首次使用
+
+1. 安装插件后，点击浏览器工具栏的视频助手图标
+2. 阅读并同意免责声明
+3. 开始使用插件功能
+
+### 功能设置
+
+点击插件图标打开控制面板：
+
+| 功能 | 说明 |
+|------|------|
+| ✅ 启用插件 | 开启/关闭插件功能 |
+| 🔄 暂停时自动续播 | 视频暂停后自动继续播放 |
+| ⚡ 播放速度 | 选择预设速度或自定义输入 |
+
+### 快捷键
+
+- 点击插件图标：打开控制面板
+- 支持自定义速度：0.1x ~ 16x
+
+---
+
+## 🛠️ 技术栈
+
+- **前端框架**: React 19 + TypeScript
+- **构建工具**: Vite + Turborepo
+- **样式方案**: Tailwind CSS
+- **扩展框架**: Chrome Extension Manifest V3
+- **包管理器**: pnpm
+
+---
+
+## 📁 项目结构
+
+```
+browser-play/
+├── chrome-extension/     # 扩展核心配置
+│   ├── manifest.ts       # 插件清单
+│   └── src/background/   # 后台脚本
+├── pages/                # 插件页面
+│   ├── popup/           # 弹出面板
+│   ├── options/         # 选项页面（免责声明）
+│   └── content/         # 内容脚本（视频控制）
+├── packages/            # 共享包
+│   ├── storage/         # 存储管理
+│   ├── i18n/           # 国际化
+│   ├── ui/             # UI 组件
+│   └── shared/         # 共享工具
+└── dist/               # 构建输出
+```
+
+---
+
+## 🔧 开发指南
+
+### 环境要求
+
+- Node.js >= 22.15.1
+- pnpm >= 10.11.0
+
+### 开发命令
+
+```bash
+# 安装依赖
+pnpm install
+
+# 开发模式（热更新）
+pnpm dev
+
+# 构建生产版本
+pnpm build
+
+# 打包为 zip
+pnpm zip
+
+# 代码检查
+pnpm lint
+
+# 格式化代码
+pnpm format
+```
+
+### Firefox 支持
+
+```bash
+# 开发模式
+pnpm dev:firefox
+
+# 构建
+pnpm build:firefox
+
+# 打包
+pnpm zip:firefox
+```
+
+---
+
+## ⚠️ 免责声明
+
+1. 本扩展仅供个人学习和研究使用
+2. 使用前请确保了解自动续播和倍速控制功能
+3. 本扩展不会收集、存储或传输任何用户数据
+4. 使用本扩展可能违反某些网站的服务条款，用户需自行承担风险
+5. 不同网站的视频播放器实现方式不同，不保证在所有网站正常工作
+6. 用户应遵守当地法律法规
+
+---
+
+## 🤝 贡献指南
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 本仓库
+2. 创建你的特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 打开 Pull Request
+
+---
+
+## 📄 许可证
+
+本项目基于 [MIT](LICENSE) 许可证开源。
+
+---
+
+## 👤 作者
+
+**RayMor** - [@RayMorTwinkle](https://github.com/RayMorTwinkle)
+
+---
+
+<a name="english"></a>
+## English
+
+### Introduction
+
+Video Helper is a browser extension that enhances your video watching experience. It supports HTML5 video players on all websites.
+
+### Features
+
+- 🔄 **Auto Resume** - Automatically resume video playback after pause
+- ⚡ **Speed Control** - Support 0.1x ~ 16x playback speed
+- 🌐 **Universal** - Works on all websites (YouTube, Bilibili, etc.)
+- 💾 **Settings Persistence** - Automatically save your preferences
+- 🛡️ **Privacy First** - No user data collection
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/RayMorTwinkle/browser-play.git
+cd browser-play
+
+# Install dependencies
+npm install -g pnpm
+pnpm install
+
+# Build
+pnpm build
+
+# Load dist folder to chrome://extensions/ in developer mode
+```
+
+### Development
+
+```bash
+pnpm dev      # Development mode with HMR
+pnpm build    # Production build
+pnpm zip      # Package as zip
+pnpm lint     # Lint code
+pnpm format   # Format code
+```
+
+---
+
+<div align="center">
+
+**如果这个项目对你有帮助，请给个 ⭐ Star！**
+
+</div>

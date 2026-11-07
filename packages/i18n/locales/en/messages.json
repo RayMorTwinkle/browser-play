@@ -1,45 +1,65 @@
 {
   "extensionDescription": {
     "description": "Extension description",
-    "message": "Chrome extension boilerplate developed with Vite, React and Typescript"
+    "message": "视频助手 - 自动续播和倍速控制"
   },
   "extensionName": {
     "description": "Extension name",
-    "message": "Chrome extension boilerplate"
+    "message": "视频助手"
+  },
+  "extensionAuthor": {
+    "description": "Extension author",
+    "message": "BrowserPlay"
+  },
+  "disclaimerTitle": {
+    "description": "Disclaimer title",
+    "message": "免责声明"
+  },
+  "disclaimerContent": {
+    "description": "Disclaimer content",
+    "message": "在使用本扩展之前，请仔细阅读以下免责声明：\n\n1. 本扩展仅供个人学习和研究使用，请勿用于任何商业用途。\n\n2. 本扩展会自动控制网页视频的播放行为（包括但不限于自动续播、调整播放速度），使用前请确保您了解并接受这些功能。\n\n3. 本扩展不会收集、存储或传输任何用户数据或个人信息。\n\n4. 使用本扩展可能违反某些网站的服务条款，用户需自行承担使用风险。开发者不对因使用本扩展而产生的任何直接或间接损失负责。\n\n5. 本扩展不保证在所有网站和所有视频上正常工作，不同网站的视频播放器实现方式不同。\n\n6. 用户应遵守当地法律法规，不得利用本扩展从事违法活动。\n\n7. 继续使用本扩展即表示您已阅读、理解并同意以上条款。\n\n如有疑问，请联系开发者。"
+  },
+  "disclaimerAgree": {
+    "description": "Agree button text",
+    "message": "我已阅读并同意"
+  },
+  "disclaimerDecline": {
+    "description": "Decline button text",
+    "message": "不同意"
   },
   "toggleTheme": {
-    "message": "Toggle theme"
+    "message": "切换主题"
   },
   "injectButton": {
-    "message": "Click to inject Content Scripts"
+    "message": "注入内容脚本"
   },
   "greeting": {
     "description": "Greeting message",
-    "message": "Hello, My name is $NAME$",
+    "message": "你好，我是 $NAME$",
     "placeholders": {
       "name": {
         "content": "$1",
-        "example": "John Doe"
+        "example": "张三"
       }
     }
   },
   "hello": {
     "description": "Placeholder example",
-    "message": "Hello $1"
+    "message": "你好 $1"
   },
   "displayErrorInfo": {
-    "message": "Error occur"
+    "message": "发生错误"
   },
   "displayErrorDescription": {
-    "message": "Sorry, something went wrong while loading the page."
+    "message": "抱歉，加载页面时出现问题。"
   },
   "displayErrorDetailsInfo": {
-    "message": "Error details:"
+    "message": "错误详情："
   },
   "displayErrorUnknownErrorInfo": {
-    "message": "Unknown error"
+    "message": "未知错误"
   },
   "displayErrorReset": {
-    "message": "Run Again"
+    "message": "重试"
   }
 }

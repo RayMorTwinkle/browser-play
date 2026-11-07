@@ -9,22 +9,239 @@
   padding: 1rem;
 }
 
-.App-logo {
-  height: 50vmin;
-  margin-bottom: 1rem;
-}
-
 .App-header {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
-code {
-  background: rgba(148, 163, 184, 0.5);
-  border-radius: 0.25rem;
-  padding: 0.2rem 0.5rem;
+.setting-item {
+  width: 100%;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.checkbox-input {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.speed-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.speed-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.speed-button {
+  padding: 8px 4px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.speed-button:hover {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.speed-button-active {
+  border-color: #3b82f6 !important;
+  background-color: #dbeafe !important;
+  color: #1d4ed8 !important;
+}
+
+.custom-speed-section {
+  margin-top: 12px;
+}
+
+.custom-speed-input-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.custom-speed-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.custom-speed-input:focus {
+  border-color: #3b82f6;
+}
+
+.custom-speed-input::placeholder {
+  color: #9ca3af;
+}
+
+.custom-speed-btn {
+  padding: 8px 16px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.custom-speed-btn:hover {
+  background-color: #2563eb;
+}
+
+.input-error {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #ef4444;
+}
+
+.current-custom-speed {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-active {
+  background-color: #22c55e;
+}
+
+.status-inactive {
+  background-color: #ef4444;
+}
+
+.author-info {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 8px;
+}
+
+.disclaimer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.disclaimer-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 320px;
+  max-height: 450px;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.disclaimer-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.disclaimer-content {
+  font-size: 12px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.disclaimer-content p {
+  margin: 0;
+}
+
+.disclaimer-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.disclaimer-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.disclaimer-btn-agree {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.disclaimer-btn-agree:hover {
+  background-color: #2563eb;
+}
+
+.disclaimer-btn-decline {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+}
+
+.disclaimer-btn-decline:hover {
+  background-color: #e5e7eb;
+}
+
+.disclaimer-author {
+  text-align: center;
+  font-size: 11px;
+  color: #9ca3af;
 }

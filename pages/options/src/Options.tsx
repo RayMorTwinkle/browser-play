@@ -1,26 +1,58 @@
 import '@src/Options.css';
 import { t } from '@extension/i18n';
-import { PROJECT_URL_OBJECT, useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
-import { exampleThemeStorage } from '@extension/storage';
-import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
+import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
+import { disclaimerStorage } from '@extension/storage';
+import { cn, LoadingSpinner } from '@extension/ui';
 
-const Options = () => {
-  const { isLight } = useStorage(exampleThemeStorage);
-  const logo = isLight ? 'options/logo_horizontal.svg' : 'options/logo_horizontal_dark.svg';
+const DisclaimerPage = () => {
+  const disclaimerStatus = useStorage(disclaimerStorage);
 
-  const goGithubSite = () => chrome.tabs.create(PROJECT_URL_OBJECT);
+  const handleAgree = async () => {
+    await disclaimerStorage.agree();
+    window.close();
+  };
+
+  const handleDecline = () => {
+    window.close();
+  };
 
   return (
-    <div className={cn('App', isLight ? 'bg-slate-50 text-gray-900' : 'bg-gray-800 text-gray-100')}>
-      <button onClick={goGithubSite}>
-        <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
-      </button>
-      <p>
-        Edit <code>pages/options/src/Options.tsx</code>
-      </p>
-      <ToggleButton onClick={exampleThemeStorage.toggle}>{t('toggleTheme')}</ToggleButton>
+    <div className="disclaimer-container">
+      <div className="disclaimer-card">
+        <h1 className="disclaimer-title">{t('disclaimerTitle')}</h1>
+
+        <div className="disclaimer-content">
+          {t('disclaimerContent')
+            .split('\n')
+            .map((line, index) => (
+              <p key={index}>{line || '\u00A0'}</p>
+            ))}
+        </div>
+
+        <div className="disclaimer-buttons">
+          <button className="disclaimer-btn agree-btn" onClick={handleAgree}>
+            {t('disclaimerAgree')}
+          </button>
+          <button className="disclaimer-btn decline-btn" onClick={handleDecline}>
+            {t('disclaimerDecline')}
+          </button>
+        </div>
+
+        <div className="disclaimer-footer">
+          <p>作者: {t('extensionAuthor')}</p>
+          <p>版本: 1.0.0</p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default withErrorBoundary(withSuspense(Options, <LoadingSpinner />), ErrorDisplay);
+const Options = () => {
+  return <DisclaimerPage />;
+};
+
+export default withErrorBoundary(withSuspense(Options, <LoadingSpinner />), ({ error }) => (
+  <div className="error-container">
+    <p>出现错误: {error.message}</p>
+  </div>
+));

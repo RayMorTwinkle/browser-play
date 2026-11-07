@@ -1,7 +1,7 @@
 {
   "name": "chrome-extension",
-  "version": "0.5.0",
-  "description": "chrome extension - core settings",
+  "version": "1.0.0",
+  "description": "视频助手 - 自动续播和倍速控制",
   "type": "module",
   "private": true,
   "sideEffects": false,
